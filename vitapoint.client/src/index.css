@@ -1,0 +1,82 @@
+:root {
+    --Background: #FAF8F5;
+    --Background-secondary: white;
+    --Text: #1E293B;
+    --Primary: #0F4C81;
+    --Secondary: #516377;
+    --Accent: #10B981;
+    --Error: #D9383A;
+    --Shadow: rgba(81,99,119,0.2);
+    
+    --BrandFont: "Plus Jakarta Sans", sans-serif;
+    --HeadingFont: "Plus Jakarta Sans", sans-serif;
+    --TextFont: "Inter", sans-serif;
+
+    --BrandWeight: 700;
+    --HeadingWeight: 600;
+    --TextWeight: 400;
+
+    --ExtraLargeFont: 2.5rem;
+    --LargeFont: 1.95rem;
+    --MediumFont: 1.56rem;
+    --SmallFont: 1.25rem;
+    --NormalFont: 1rem;
+    --ErrorFont: 0.9rem;
+}
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    background-color: var(--Background);
+    background-image: linear-gradient(white, var(--Background));
+    overflow-x: hidden;
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    color: var(--Text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h1 {
+    color: var(--Accent);
+    font-family: var(--BrandFont);
+    font-weight: var(--BrandWeight);
+    font-size: var(--ExtraLargeFont);
+    margin: 0px;
+    display: flex;
+    align-items: center;
+    filter: drop-shadow(-2px 2px 1px var(--Secondary));
+}
+
+h2 {
+    color: var(--Primary);
+    font-family: var(--HeadingFont);
+    font-weight: var(--HeadingWeight);
+    font-size: var(--LargeFont);
+    margin: 0px;
+}
+
+h3 {
+    color: var(--Primary);
+    font-family: var(--HeadingFont);
+    font-weight: var(--HeadingWeight);
+    font-size: var(--MediumFont);
+    margin: 0px;
+}
+
+h4 {
+    color: var(--Primary);
+    font-family: var(--HeadingFont);
+    font-weight: var(--HeadingWeight);
+    font-size: var(--SmallFont);
+    margin: 0px;
+}
+
+p {
+    color: var(--Text);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    margin: 0px;
+    font-size: var(--NormalFont);
+}

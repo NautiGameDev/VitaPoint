@@ -1,0 +1,42 @@
+﻿.app-container {
+    width: 100vw;
+    min-height: 99.8vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.material-icons {
+    font-family: 'Material Icons';
+    font-size: var(--ExtraLargeFont);
+}
+
+.no-select {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-link {
+    color: var(--Primary);
+    font-weight: var(--HeadingWeight);
+    font-family: var(--HeadingFont);
+}
+
+.nav-link:active {
+    color: var(--Accent);
+}
+
+.nav-link:hover {
+    color: var(--Accent);
+}

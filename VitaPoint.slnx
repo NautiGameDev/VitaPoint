@@ -1,0 +1,7 @@
+<Solution>
+  <Project Path="vitapoint.client/vitapoint.client.esproj">
+    <Build />
+    <Deploy />
+  </Project>
+  <Project Path="VitaPoint.Server/VitaPoint.Server.csproj" />
+</Solution>
