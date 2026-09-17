@@ -19,3 +19,9 @@ export async function attemptRefresh() {
 
     return response;
 }
+
+export async function logout() {
+    const response = await apiRequest('account/logout', 'POST', null);
+
+    return response;
+}

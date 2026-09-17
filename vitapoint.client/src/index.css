@@ -36,6 +36,7 @@ html, body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    overscroll-behavior: inherit;
 }
 
 h1 {
@@ -79,4 +80,11 @@ p {
     font-weight: var(--TextWeight);
     margin: 0px;
     font-size: var(--NormalFont);
+}
+
+@media (min-width: 1024px) {
+    html, body {
+        overscroll-behavior: inherit;
+    }
+    
 }

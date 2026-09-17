@@ -1,0 +1,62 @@
+.nav-component {
+    background-color: var(--Primary);
+    width: 100vw;
+    height: 99.9vh;
+    touch-action: none;
+}
+
+.nav-links {
+    display: flex;
+    flex-direction: column;
+    padding-top: 32px;
+    gap: 32px;
+    font-size: var(--SmallFont);
+    font-weight: var(--HeadingWeight);
+    font-family: var(--HeadingFont);
+    color: var(--Background);
+    list-style-type: none;
+}
+
+.nav-links li {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.15s ease-in-out;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.nav-links li:active {
+    cursor: pointer;
+    color: var(--Accent);
+    scale: 1.05;
+}
+
+@media (min-width: 1024px) {
+    .nav-component {
+        width: 100%;
+        height: 100%;
+    }
+
+    .nav-links {
+        font-size: var(--NormalFont);
+        gap: 16px;
+        padding-top: 16px;
+    }
+
+    .nav-links li {
+        transition: all 0.25s ease-in-out;
+    }
+
+    .nav-links li:hover {
+        cursor: pointer;
+        color: var(--Accent);
+        scale: 1.05;
+    }
+
+    .nav-links .material-icons {
+        font-size: var(--MediumFont);
+    }
+}

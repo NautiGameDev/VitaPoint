@@ -27,7 +27,7 @@ function Login() {
         const response = await postLogin(email, password);
 
         if (response.status === 200) {
-            alert("Login successful!");
+            navigate("/Dashboard");
         }
         else {
             setLoginError(`Error logging in with status code ${response.status}. ${response.message}`);
@@ -70,6 +70,7 @@ function Login() {
                   </div>
               </form>
           </div>
+
       </div>
   );
 }

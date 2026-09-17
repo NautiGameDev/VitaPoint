@@ -1,17 +1,18 @@
 ﻿.app-container {
     width: 100vw;
-    min-height: 99.8vh;
+    min-height: 95vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overscroll-behavior: none;
 }
 
 .page {
     width: 100%;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
+    overscroll-behavior: none;
 }
 
 .material-icons {
@@ -39,4 +40,11 @@
 
 .nav-link:hover {
     color: var(--Accent);
+}
+
+@media (min-width: 1024px) {
+    .app-container {
+        min-height: 99vh;
+        
+    }
 }
