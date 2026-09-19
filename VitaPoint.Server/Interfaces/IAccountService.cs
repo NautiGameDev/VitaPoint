@@ -10,7 +10,9 @@ namespace VitaPoint.Server.Interfaces
 
         public Task<(AuthResult result, string? userId)> Register(RegisterDto dto);
 
-        public Task<AuthResult> UpdateCredentials(string userId, UpdateUserDto dto);
+        public Task<AuthResult> ValidatePassword(string userId, string password);
+
+        public Task<AuthResult> UpdatePassword(string userId, string currentPassword, string newPassword);
 
         public Task<AuthResult> RefreshToken(string refreshToken);
     }

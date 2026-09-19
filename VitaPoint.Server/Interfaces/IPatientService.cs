@@ -1,4 +1,5 @@
-﻿using VitaPoint.Server.Models;
+﻿using VitaPoint.Server.DTOs.Patient;
+using VitaPoint.Server.Models;
 
 namespace VitaPoint.Server.Interfaces
 {
@@ -12,5 +13,7 @@ namespace VitaPoint.Server.Interfaces
 
         //Used to activate new patient account
         public Task<Patient> ActivatePatient(Patient patient, string userId);
+
+        public Task<Patient?> UpdatePatient(UpdatePatientDto dto, string userId);
     }
 }

@@ -1,0 +1,82 @@
+.profile-table form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.profile-table-cell input {
+    height: 20px;
+    font-size: var(--NormalFont);
+    color: var(--Text);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    border: 1px solid var(--Primary);
+    border-radius: 5px;
+    margin: 8px 0px;
+    padding: 4px;
+    background-color: var(--Background-secondary);
+}
+
+.profile-table-cell input:focus {
+    outline: 2px solid var(--Accent);
+}
+
+.profile-table-cell select {
+    height: 32px;
+    width: 200px;
+    font-size: var(--ErrorFont);
+    color: var(--Text);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    border: 1px solid var(--Primary);
+    border-radius: 5px;
+    margin: 8px 0px;
+    background-color: var(--Background-secondary);
+    cursor: pointer;
+}
+
+.update-profile-error-container {
+    color: var(--Error);
+    font-size: var(--ErrorFont);
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 16px;
+    margin-top: 32px;
+
+    background-color: var(--Background-secondary);
+    border: 1px solid var(--Primary);
+    border-radius: 10px;
+    filter: drop-shadow(0px 3px 5px var(--Shadow));
+    transition: all 0.25s ease-in-out;
+    padding: 16px 32px;
+}
+
+.update-profile-disabled-field {
+    color: var(--Secondary);
+    font-size: var(--ErrorFont);
+    font-style: italic;
+    cursor: not-allowed;
+}
+
+.update-profile-hidden-row {
+    display: none;
+    transition: all 0.25s ease-in-out;
+}
+
+.update-pass-container {
+    justify-content: start;
+    width: 100%;
+}
+
+.update-pass-container input {
+    accent-color: var(--Accent);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.update-profile-row {
+    flex-direction: column;
+}

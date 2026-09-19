@@ -1,4 +1,5 @@
-﻿using VitaPoint.Server.Interfaces;
+﻿using VitaPoint.Server.DTOs.Patient;
+using VitaPoint.Server.Interfaces;
 using VitaPoint.Server.Models;
 
 namespace VitaPoint.Server.Services
@@ -39,6 +40,17 @@ namespace VitaPoint.Server.Services
             patient.ActivationCode = null;
 
             return await _patientRepo.UpdatePatient(patient);
+        }
+
+        public async Task<Patient?> UpdatePatient(UpdatePatientDto dto, string userId)
+        {
+            Patient? currentPatient = await _patientRepo.GetPatientByUser(userId);
+
+            if (currentPatient == null) return null;
+            
+            currentPatient.UpdatePatientData(dto);
+
+            return await _patientRepo.UpdatePatient(currentPatient);
         }
     }
 }

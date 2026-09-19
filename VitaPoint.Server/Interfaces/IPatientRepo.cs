@@ -10,7 +10,7 @@ namespace VitaPoint.Server.Interfaces
         //Used during account registration to very patient exists
         public Task<Patient?> VerifyPatient(string email, string activationCode, DateOnly DOB, string zip);
 
-        
+      
         public Task<Patient> UpdatePatient(Patient patient);
     }
 }

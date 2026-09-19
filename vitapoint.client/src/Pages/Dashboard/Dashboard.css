@@ -32,6 +32,7 @@
     align-items: center;
     filter: drop-shadow(0px 5px 5px var(--Shadow));
     touch-action: none;
+    z-index: 999;
 }
 
 .dashboard-nav h1 {
@@ -50,18 +51,17 @@
 }
 
 .dashboard-nav-menu-holder {
-    position: absolute;
+    position: fixed;
     top: 44px;
     transform: scaleY(1);
     transform-origin: top;
     transition: all 0.5s ease-in-out;
     width: 100%;
-    z-index: 999;
     touch-action: none;
 }
 
 .dashboard-nav-menu-holder-hidden {
-    position: absolute;
+    position: fixed;
     visibility: hidden;
     pointer-events: none;
     transform: scaleY(0);

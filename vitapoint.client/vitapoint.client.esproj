@@ -16,6 +16,7 @@
     <Folder Include="src\Pages\DBAppointments\" />
     <Folder Include="src\Pages\DBResults\" />
     <Folder Include="src\Pages\DBPrescriptions\" />
+    <Folder Include="src\Pages\DBUpdateProfile\" />
     <Folder Include="src\Pages\Register\" />
   </ItemGroup>
 </Project>

@@ -128,7 +128,10 @@ namespace VitaPoint.Server.Services
             }, account.Id);
         }
 
-        public async Task<AuthResult> UpdateCredentials(string userId, UpdateUserDto dto)
+
+        //Used for account updating -> Called from PatientController
+        //Validate user password first. If a new password was entered in client, update password
+        public async Task<AuthResult> ValidatePassword(string userId, string password)
         {
             Account? account = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
 
@@ -142,68 +145,57 @@ namespace VitaPoint.Server.Services
                 };
             }
 
-            //Verify credentials before making changes
-            var result = await _signInManager.CheckPasswordSignInAsync(account, dto.CurrentPassword, false);
+            var result = await _signInManager.CheckPasswordSignInAsync(account, password, false);
 
             if (!result.Succeeded)
             {
                 return new AuthResult()
                 {
                     Success = false,
-                    ErrorMessage = "Current password is incorrect",
+                    ErrorMessage = "Incorrect Password",
                     ErrorType = AuthErrorType.InvalidCredentials
                 };
             }
 
-            //Update credentials using a transaction in case any errors occur during process.
-            //Account update process is "all or nothing" to prevent system errors
-            using var transaction = await _context.Database.BeginTransactionAsync();
-
-            try
+            return new AuthResult()
             {
-                if (!string.IsNullOrWhiteSpace(dto.NewPassword))
-                {
-                    var passwordResult = await _userManager.ChangePasswordAsync(account, dto.CurrentPassword, dto.NewPassword);
+                Success = true
+            };
+        }
 
-                    if (!passwordResult.Succeeded)
-                    {
-                        var firstError = passwordResult.Errors.FirstOrDefault()?.Description ?? "Password update failed.";
-                        throw new Exception(firstError);
-                    }
+        public async Task<AuthResult> UpdatePassword(string userId, string currentPassword, string newPassword)
+        {
+            Account? account = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
 
-                }
-
-                if (account.Email != dto.Email)
-                {
-
-                    var emailResult = await _userManager.SetEmailAsync(account, dto.Email);
-                    var userNameResult = await _userManager.SetUserNameAsync(account, dto.Email);
-
-                    if (!emailResult.Succeeded || !userNameResult.Succeeded)
-                    {
-                        var error = emailResult.Errors.Concat(userNameResult.Errors).FirstOrDefault()?.Description;
-                        throw new Exception(error ?? "Email/Username update error.");
-                    }
-                }
-
-                await transaction.CommitAsync();
-
-                return new AuthResult()
-                {
-                    Success = true,
-                    ErrorType = AuthErrorType.None
-                };
-            }
-            catch (Exception ex)
+            if (account == null)
             {
-                await transaction.RollbackAsync();
                 return new AuthResult()
                 {
                     Success = false,
-                    ErrorMessage = ex.Message,
+                    ErrorMessage = "Account could not be found with that UserId",
+                    ErrorType = AuthErrorType.NotFound
+                };
+            }
+            
+            var passwordResult = await _userManager.ChangePasswordAsync(account, currentPassword, newPassword);
+
+            if (!passwordResult.Succeeded)
+            {
+                var error = passwordResult.Errors.FirstOrDefault()?.Description ?? "Password update failed.";
+                return new AuthResult()
+                {
+                    Success = false,
+                    ErrorMessage = error,
                     ErrorType = AuthErrorType.ProcessFailed
                 };
             }
+            
+            return new AuthResult()
+            {
+                Success = true,
+                ErrorType = AuthErrorType.None
+            };
+            
         }
 
 

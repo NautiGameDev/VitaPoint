@@ -117,23 +117,7 @@ namespace VitaPoint.Server.Controllers
             SetCookie(result.Token, result.RefreshToken);
 
             return Ok(new { message = "Token refreshed successfully " });
-        }
-
-        [HttpPut("update")]
-        [Authorize]
-        public async Task<IActionResult> UpdateCredentials([FromBody] UpdateUserDto updateDto)
-        {
-            AuthResult updateResult = await _accountService.UpdateCredentials(UserId, updateDto);
-
-            if (updateResult.Success)
-            {
-                await ClearAuthCookie();
-
-                return Ok(new { message = "Account successfully updated" });
-            }
-
-            return BadRequest(new { message = updateResult.ErrorMessage });
-        }
+        }       
 
 
         /*
