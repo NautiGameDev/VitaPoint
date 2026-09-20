@@ -77,8 +77,18 @@ builder.Services.AddCors(options =>
 //Add Services to system
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAccountService, AccountService>();
+
 builder.Services.AddScoped<IPatientService, PatientService>();
 builder.Services.AddScoped<IPatientRepo, PatientRepo>();
+
+builder.Services.AddScoped<IMessageService, MessageService>();
+builder.Services.AddScoped<IMessageRepo, MessageRepo>();
+
+builder.Services.AddScoped<IDoctorService, DoctorService>();
+builder.Services.AddScoped<IDoctorRepo, DoctorRepo>();
+
+builder.Services.AddScoped<IPatientDoctorService, PatientDoctorService>();
+builder.Services.AddScoped<IPatientDoctorRepo, PatientDoctorRepo>();
 
 var app = builder.Build();
 

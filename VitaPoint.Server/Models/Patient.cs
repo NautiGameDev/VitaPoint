@@ -58,6 +58,7 @@ namespace VitaPoint.Server.Models
             City = dto.City;
             State = dto.State;
             Zip = dto.Zip;
+            LastUpdated = DateTime.UtcNow;
         }
 
         private void UpdateMaritalStatus(string maritalStatus)
@@ -120,6 +121,11 @@ namespace VitaPoint.Server.Models
                     PreferredContactMethod = PreferredContactMethods.Email;
                     break;
             }
+        }
+
+        public string GetPatientName()
+        {
+            return $"{FirstName} {LastName}";
         }
     }
 
