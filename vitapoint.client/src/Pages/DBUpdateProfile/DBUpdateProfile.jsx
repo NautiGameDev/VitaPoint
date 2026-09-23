@@ -94,6 +94,7 @@ function DBUpdateProfile() {
             newPassword: newPassword,
             maritalStatus: maritalStatus,
             preferredName: preferredName,
+            preferredLanguage: preferredLanguage,
             pronouns: pronouns,
             phoneNumber: phone,
             preferredContactMethod: contactMethod,

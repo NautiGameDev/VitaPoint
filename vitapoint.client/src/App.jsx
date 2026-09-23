@@ -6,9 +6,11 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import DBProfile from "./Pages/DBProfile/DBProfile";
 import DBUpdateProfile from "./Pages/DBUpdateProfile/DBUpdateProfile";
 import DBMessages from "./Pages/DBMessages/DBMessages";
+import DBMessageThread from "./Pages/DBMessageThread/DBMessageThread";
 import DBAppointments from "./Pages/DBAppointments/DBAppointments";
 import DBResults from './Pages/DBResults/DBResults';
 import DBPrescriptions from "./Pages/DBPrescriptions/DBPrescriptions";
+
 
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
                     <Route path="Profile" element={<DBProfile />} />
                     <Route path="Update-Profile" element={<DBUpdateProfile />} />
                     <Route path="Messages" element={<DBMessages />} />
+                    <Route path="Messages/Thread/:messageId" element={<DBMessageThread />} />
                     <Route path="Appointments" element={<DBAppointments />} />
                     <Route path="Results" element={<DBResults />} />
                     <Route path="Prescriptions" element={<DBPrescriptions />} />

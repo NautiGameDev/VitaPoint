@@ -27,7 +27,7 @@ namespace VitaPoint.Server.Repos
         {
             return await _context.Messages
                 .Where(m => !m.IsReply && (m.ReceiverId == userId || m.SenderId == userId))
-                .OrderBy(m => m.TimeSent)
+                .OrderByDescending(m => m.TimeSent)
                 .ToListAsync();
         }
 

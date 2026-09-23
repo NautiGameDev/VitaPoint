@@ -1,0 +1,75 @@
+.root-message-component {
+    display: flex;
+    width: 100%;
+    background-color: var(--Background-secondary);
+    border: 1px solid var(--Primary);
+    border-radius: 10px;
+    filter: drop-shadow(0px 3px 5px var(--Shadow));
+    transition: all 0.3s ease-in-out;
+}
+
+.root-message-component:active {
+    scale: 1.025;
+    cursor: pointer;
+    filter: drop-shadow(0px 3px 5px var(--Secondary));
+    border: 1px solid var(--Accent);
+    background-color: var(--Background);
+}
+
+.root-message-component:active h3 {
+    color: var(--Accent);
+}
+
+.root-message-component .material-icons {
+    transition: all 0.3s ease-in-out;
+    color: var(--Shadow);
+}
+
+.root-message-icon-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 15%;
+    color: var(--Secondary);
+}
+
+.root-message-data-container {
+    display: flex;
+    flex-direction: column;
+    width: 85%;
+}
+
+.root-message-row {
+    width: 100%;
+    display: flex;
+    margin: 8px 0px;
+}
+
+.root-message-row h3 {
+    margin-left: 8px;
+    font-size: var(--SmallFont);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 90%;
+    transition: all 0.3s ease-in-out;
+}
+
+.root-message-row p {
+    margin-left: 16px;
+    font-size: var(--ErrorFont);
+}
+
+@media (min-width: 1024px) {
+    .root-message-component:hover {
+        scale: 1.025;
+        cursor: pointer;
+        filter: drop-shadow(0px 3px 5px var(--Secondary));
+        border: 1px solid var(--Accent);
+        background-color: var(--Background);
+    }
+
+    .root-message-component:hover h3 {
+        color: var(--Accent);
+    }
+}

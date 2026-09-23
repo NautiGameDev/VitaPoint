@@ -9,6 +9,7 @@ namespace VitaPoint.Server.Helpers
         {
             return new MessageDto()
             {
+                Id = message.Id,
                 SenderId = message.SenderId,
                 SenderName = sender,
                 ReceiverId = message.ReceiverId,

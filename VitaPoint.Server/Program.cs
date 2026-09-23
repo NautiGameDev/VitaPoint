@@ -135,6 +135,22 @@ using (var scope = app.Services.CreateScope())
             await userManager.AddToRoleAsync(adminUser, "Admin");
         }
     }
+
+    if (await userManager.FindByNameAsync("mayalin@vitapoint.com") == null)
+    {
+        var testDoctor = new Account
+        {
+            UserName = "mayalin@vitapoint.com",
+            Email = "mayalin@vitapoint.com"
+        };
+
+        var result = await userManager.CreateAsync(testDoctor, "VitaPoint1!");
+
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(testDoctor, "Moderator");
+        }
+    }
 }
 
 app.MapFallbackToFile("/index.html");
