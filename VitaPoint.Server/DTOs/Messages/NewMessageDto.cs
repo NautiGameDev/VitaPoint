@@ -2,8 +2,7 @@
 {
     public class NewMessageDto
     {
-        public string? SenderId { get; set; }
-        public string? ReceiverId { get; set; }
+        public string[] UserIds { get; set; }
         public string? Subject { get; set; }
         public string? Content { get; set; }
         public DateTime TimeSent { get; set; } = DateTime.Now;

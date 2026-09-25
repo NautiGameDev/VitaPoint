@@ -6,6 +6,7 @@ import Dashboard from "./Pages/Dashboard/Dashboard";
 import DBProfile from "./Pages/DBProfile/DBProfile";
 import DBUpdateProfile from "./Pages/DBUpdateProfile/DBUpdateProfile";
 import DBMessages from "./Pages/DBMessages/DBMessages";
+import DBCreateMessage from "./Pages/DBCreateMessage/DBCreateMessage";
 import DBMessageThread from "./Pages/DBMessageThread/DBMessageThread";
 import DBAppointments from "./Pages/DBAppointments/DBAppointments";
 import DBResults from './Pages/DBResults/DBResults';
@@ -26,6 +27,7 @@ function App() {
                     <Route path="Update-Profile" element={<DBUpdateProfile />} />
                     <Route path="Messages" element={<DBMessages />} />
                     <Route path="Messages/Thread/:messageId" element={<DBMessageThread />} />
+                    <Route path="Messages/Create" element={<DBCreateMessage />} />
                     <Route path="Appointments" element={<DBAppointments />} />
                     <Route path="Results" element={<DBResults />} />
                     <Route path="Prescriptions" element={<DBPrescriptions />} />

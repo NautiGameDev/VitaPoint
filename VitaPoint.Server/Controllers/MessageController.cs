@@ -78,18 +78,21 @@ namespace VitaPoint.Server.Controllers
         {
             if (string.IsNullOrEmpty(UserId)) return Unauthorized(new { message = "User not authorized to fetch data" });
 
-            dto.SenderId = UserId;
+            string senderId = UserId;
+
+            //Take user id from thread that doesn't match id of logged in user
+            string receiverId = dto.UserIds[0] == UserId ? dto.UserIds[1] : dto.UserIds[0];
 
             //Ensure logged in user has privileges to message target user
             List<PatientDoctor> pdList = await _patientDoctorService.GetPDByUserId(UserId);
             PatientDoctor verifiedPD = pdList.FirstOrDefault(pd =>
-            (pd.PatientUserId == UserId && pd.DoctorUserId == dto.ReceiverId) ||
-            (pd.DoctorUserId == UserId && pd.PatientUserId == dto.ReceiverId));
+            (pd.PatientUserId == UserId && pd.DoctorUserId == receiverId) ||
+            (pd.DoctorUserId == UserId && pd.PatientUserId == receiverId));
 
             if (verifiedPD == null) return Unauthorized(new { message = "User not authorized to send message to that account" });
 
 
-            Message newMessage = await _messageservice.NewMessage(dto);
+            Message newMessage = await _messageservice.NewMessage(dto, senderId, receiverId);
 
             if (newMessage == null) return BadRequest(new { message = "An error occurred while creating new message" });
 

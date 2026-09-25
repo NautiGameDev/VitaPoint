@@ -16,7 +16,7 @@ namespace VitaPoint.Server.Helpers
                 ReceiverName = receiver,
                 Subject = message.Subject,
                 Content = message.Content,
-                TimeSent = message.TimeSent,
+                TimeSent = DateTime.SpecifyKind(message.TimeSent, DateTimeKind.Utc),
                 IsReply = message.IsReply
             };
         }

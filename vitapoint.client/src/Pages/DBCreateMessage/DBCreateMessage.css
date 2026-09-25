@@ -1,0 +1,168 @@
+.create-message-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0px;
+}
+
+.create-message-syscontainer {
+    width: 100%;
+    min-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-message-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.create-message-row h2 {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-message-container form {
+    width: 90%;
+    background-color: var(--Background-secondary);
+    border: 1px solid var(--Primary);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    filter: drop-shadow(0px 3px 5px var(--Shadow));
+    margin: 32px 0px;
+    padding: 0px 0px 16px 0px;
+}
+
+.create-message-form-row {
+    width: 100%;
+}
+
+.create-message-error-row {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    color: var(--Error);
+    font-family: var(--TextFont);
+    font-size: var(--ErrorFont);
+    font-weight: var(--TextWeight);
+    font-style: italic;
+}
+
+.create-message-form-row label {
+    font-weight: var(--HeadingWeight);
+    font-family: var(--HeadingFont);
+    color: var(--Secondary);
+    letter-spacing: 1px;
+    margin: 0px 8px 0px 16px;
+    font-weight: var(--BrandWeight);
+}
+
+.create-message-form-row select {
+    height: 24px;
+    width: 200px;
+    font-size: var(--ErrorFont);
+    color: var(--Text);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    border: 1px solid var(--Primary);
+    border-radius: 5px;
+    margin: 8px 0px;
+    background-color: var(--Background-secondary);
+    cursor: pointer;
+}
+
+.create-message-form-row select:focus {
+    outline: 2px solid var(--Accent);
+}
+
+.create-message-form-row .input-box {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 8px 0px;
+}
+
+.create-message-form-row input {
+    width: 90%;
+    height: 20px;
+    font-size: var(--NormalFont);
+    color: var(--Text);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    border: 1px solid var(--Primary);
+    border-radius: 5px;
+    margin: 8px 16px;
+    padding: 4px;
+    background-color: var(--Background-secondary);
+}
+
+.create-message-form-row input:focus {
+    outline: 2px solid var(--Accent);
+}
+
+.create-message-form-row textarea {
+    width: 90%;
+    height: 200px;
+    font-size: var(--NormalFont);
+    color: var(--Text);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    border: 1px solid var(--Primary);
+    border-radius: 5px;
+    margin: 8px 16px;
+    padding: 4px;
+    background-color: var(--Background-secondary);
+    resize: none;
+}
+
+.create-message-form-row textarea:focus {
+    outline: 2px solid var(--Accent);
+}
+
+.create-message-btn-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.create-message-btn-container button {
+    background-color: var(--Accent);
+    width: 200px;
+    padding: 8px;
+    border: 1px solid var(--Shadow);
+    border-radius: 10px;
+    color: var(--Background-secondary);
+    font-size: var(--NormalFont);
+    font-weight: var(--BrandWeight);
+    font-family: var(--BrandFont);
+}
+
+.create-message-btn-container button:active {
+    background-color: var(--Primary);
+    scale: 1.05;
+    transform: translateY(-2px);
+    filter: drop-shadow(0px 2px 3px var(--Shadow));
+    transition: all 0.3s ease-in-out;
+}
+
+@media (min-width:1024px) {
+    .create-message-btn-container button:hover {
+        background-color: var(--Primary);
+        scale: 1.05;
+        transform: translateY(-2px);
+        filter: drop-shadow(0px 2px 3px var(--Shadow));
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+}

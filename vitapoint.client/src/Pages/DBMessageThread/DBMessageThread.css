@@ -16,7 +16,7 @@
     flex-direction: column;
     align-items: center;
     filter: drop-shadow(0px 3px 5px var(--Shadow));
-    margin-top: 32px;
+    margin: 64px 0px;
 }
 
 .message-thread-title {
@@ -76,6 +76,7 @@
 
 .message-thread-row p {
     padding: 16px;
+    white-space: pre-wrap;
 }
 
 .message-thread-reply-container {
@@ -110,6 +111,7 @@
     margin: 8px 0px;
     padding: 4px;
     background-color: var(--Background-secondary);
+    resize: none;
 }
 
 .message-thread-reply-container form textarea:focus {
@@ -134,4 +136,27 @@
     transform: translateY(-2px);
     filter: drop-shadow(0px 2px 3px var(--Shadow));
     transition: all 0.3s ease-in-out;
+}
+
+.message-thread-error-container {
+    color: var(--Error);
+    font-size: var(--ErrorFont);
+    font-style: italic;
+    font-weight: var(--TextWeight);
+    font-family: var(--TextFont);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+@media (min-width: 1024px) {
+    .message-thread-reply-container form button:hover {
+        background-color: var(--Primary);
+        scale: 1.05;
+        transform: translateY(-2px);
+        filter: drop-shadow(0px 2px 3px var(--Shadow));
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
 }

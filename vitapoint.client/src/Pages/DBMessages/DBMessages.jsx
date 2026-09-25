@@ -1,11 +1,14 @@
 import "./DBMessages.css";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { GetRootMessages } from "../../Services/MessageService";
 import RootMessage from "../../Components/RootMessage/RootMessage";
 
 function DBMessages() {
     const [messages, setMessages] = useState([]);
     const [sysMessage, setSysMessage] = useState("");
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const loadMessages = async () => {
@@ -38,6 +41,9 @@ function DBMessages() {
                               </span>
                               Message Center
                           </h2>
+                      </div>
+                      <div className="dbmessages-container-row">
+                          <button type="button" onClick={() => (navigate("Create"))} >New Message</button>
                       </div>
                       
 

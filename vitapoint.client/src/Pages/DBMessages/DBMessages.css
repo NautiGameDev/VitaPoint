@@ -13,7 +13,39 @@
     justify-content: center;
 }
 
+.dbmessages-container-row button {
+    background-color: var(--Accent);
+    width: 200px;
+    padding: 8px;
+    border: 1px solid var(--Shadow);
+    border-radius: 10px;
+    color: var(--Background-secondary);
+    font-size: var(--NormalFont);
+    font-weight: var(--BrandWeight);
+    font-family: var(--BrandFont);
+    margin: 16px 0px;
+}
+
+.dbmessages-container-row button:active {
+    background-color: var(--Primary);
+    scale: 1.05;
+    transform: translateY(-2px);
+    filter: drop-shadow(0px 2px 3px var(--Shadow));
+    transition: all 0.3s ease-in-out;
+}
+
 .dbmessages-container-row h2 {
     display: flex;
     align-items: center;
+}
+
+@media (min-width: 1024px) {
+    .dbmessages-container-row button:hover {
+        background-color: var(--Primary);
+        scale: 1.05;
+        transform: translateY(-2px);
+        filter: drop-shadow(0px 2px 3px var(--Shadow));
+        transition: all 0.3s ease-in-out;
+        cursor:pointer;
+    }
 }

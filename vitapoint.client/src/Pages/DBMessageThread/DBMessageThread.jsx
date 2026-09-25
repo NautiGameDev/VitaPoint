@@ -1,22 +1,45 @@
 import "./DBMessageThread.css";
 import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { GetMessageThread } from "../../Services/MessageService";
+import { GetMessageThread, PostNewMessage } from "../../Services/MessageService";
 import { FormatDate } from "../../Clients/TextFormatterClient";
+import { useNavigate } from 'react-router-dom';
 
 function DBMessageThread() {
     const { messageId } = useParams();
     const [thread, setThread] = useState([]);
     const [sysMessage, setSysMessage] = useState("Loading...");
     const [reply, setReply] = useState("");
+    const [replyError, setReplyError] = useState("")
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        setReplyError("");
 
-        //Need to implement reply error message to handle checking for content in the reply box
-        //Connect this to API call in message service
 
-        const receiver = thread[0].receiverId;
+        if (reply.trim() === "") {
+            setReplyError("Message required to reply to thread");
+        }
+
+        const body = {
+            userIds: [thread[0].senderId, thread[0].receiverId],
+            subject: thread[0].subject,
+            content: reply.trim(),
+            isReply: true,
+            rootId: messageId
+        }
+
+        const response = await PostNewMessage(body);
+
+        if (response.status === 200) {
+            alert("Message sent successfully");
+            navigate("/Dashboard/Messages");
+        }
+        else {
+            setReplyError(`Error ${response.status}: ${response.message}`);
+        }
 
     }
 
@@ -68,6 +91,9 @@ function DBMessageThread() {
                               </div>
                             ))}
                             <div className="message-thread-reply-container">
+                                <div className="message-thread-error-container">
+                                    {replyError}
+                                </div>
                                 <form onSubmit={(e) => (handleSubmit(e))} >
                                     <label>Reply:</label>
                                     <textarea value={reply} onChange={(e) => (setReply(e.target.value))} />

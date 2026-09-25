@@ -11,3 +11,15 @@ export async function GetMessageThread(id) {
 
     return response;
 }
+
+export async function PostNewMessage(body) {
+    const response = await apiRequest('message', 'POST', body);
+
+    return response;
+}
+
+export async function GetContacts() {
+    const response = await apiRequest('message/get-contacts', 'GET', null);
+
+    return response;
+}

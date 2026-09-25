@@ -23,12 +23,12 @@ namespace VitaPoint.Server.Services
             return await _messageRepo.GetRootMessagesForUser(userId);
         }
 
-        public async Task<Message> NewMessage(NewMessageDto dto)
+        public async Task<Message> NewMessage(NewMessageDto dto, string senderId, string receiverId)
         {
             Message message = new Message()
             {
-                SenderId = dto.SenderId,
-                ReceiverId = dto.ReceiverId,
+                SenderId = senderId,
+                ReceiverId = receiverId,
                 Subject = dto.Subject,
                 Content = dto.Content,
                 IsReply = dto.IsReply,
