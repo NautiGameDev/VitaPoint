@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VitaPoint.Server.Data;
 
@@ -11,9 +12,11 @@ using VitaPoint.Server.Data;
 namespace VitaPoint.Server.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260926062441_LabResults")]
+    partial class LabResults
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -511,53 +514,6 @@ namespace VitaPoint.Server.Migrations
                     b.ToTable("PatientDoctor");
                 });
 
-            modelBuilder.Entity("VitaPoint.Server.Models.Prescription", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<string>("Dosage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Instructions")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime?>("LastRefillRequest")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("LastRefilledAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("MedicineName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("OrderingDoctorId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("PatientId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PrescribedAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("RefillStatus")
-                        .HasColumnType("int");
-
-                    b.Property<int>("RefillsRemaining")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderingDoctorId");
-
-                    b.HasIndex("PatientId");
-
-                    b.ToTable("Prescriptions");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -660,25 +616,6 @@ namespace VitaPoint.Server.Migrations
                         .IsRequired();
 
                     b.Navigation("Doctor");
-
-                    b.Navigation("Patient");
-                });
-
-            modelBuilder.Entity("VitaPoint.Server.Models.Prescription", b =>
-                {
-                    b.HasOne("VitaPoint.Server.Models.Doctor", "OrderingDoctor")
-                        .WithMany()
-                        .HasForeignKey("OrderingDoctorId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("VitaPoint.Server.Models.Patient", "Patient")
-                        .WithMany()
-                        .HasForeignKey("PatientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("OrderingDoctor");
 
                     b.Navigation("Patient");
                 });

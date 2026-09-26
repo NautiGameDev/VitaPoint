@@ -15,6 +15,10 @@ namespace VitaPoint.Server.Data
         public DbSet<Message> Messages { get; set; }
         public DbSet<Doctor> Doctors { get; set; }
         public DbSet<PatientDoctor> PatientDoctor { get; set; }
+        public DbSet<LabResult> LabResults { get; set; }
+        public DbSet<LabComponent> LabComponents { get; set; }
+        public DbSet<Lab> Labs { get; set; }
+        public DbSet<Prescription> Prescriptions { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {

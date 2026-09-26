@@ -90,6 +90,12 @@ builder.Services.AddScoped<IDoctorRepo, DoctorRepo>();
 builder.Services.AddScoped<IPatientDoctorService, PatientDoctorService>();
 builder.Services.AddScoped<IPatientDoctorRepo, PatientDoctorRepo>();
 
+builder.Services.AddScoped<ILabResultService, LabResultService>();
+builder.Services.AddScoped<ILabResultRepo, LabResultRepo>();
+
+builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
+builder.Services.AddScoped<IPrescriptionRepo, PrescriptionRepo>();
+
 var app = builder.Build();
 
 app.UseDefaultFiles();
