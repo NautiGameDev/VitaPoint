@@ -31,7 +31,9 @@ namespace VitaPoint.Server.Services
             prescription.RefillStatus = RefillStatuses.Requested;
             prescription.LastRefillRequest = DateTime.UtcNow;
 
-            return (true, await _prescriptionRepo.UpdatePrescription(prescription));
+            Prescription updatedPrescription = await _prescriptionRepo.UpdatePrescription(prescription);
+
+            return (true, updatedPrescription);
         }
     }
 }

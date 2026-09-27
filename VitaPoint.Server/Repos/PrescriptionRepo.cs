@@ -17,7 +17,6 @@ namespace VitaPoint.Server.Repos
         public async Task<Prescription?> GetPrescriptionById(int id, string userId)
         {
             return await _context.Prescriptions
-                .AsNoTracking()
                 .Include(p => p.Patient)
                 .Include(p => p.OrderingDoctor)
                 .FirstOrDefaultAsync(p => p.Id == id && p.Patient.UserId == userId);
@@ -25,8 +24,7 @@ namespace VitaPoint.Server.Repos
 
         public async Task<List<Prescription>> GetPrescriptionsByUser(string userId)
         {
-            return await _context.Prescriptions
-                .AsNoTracking()
+            return await _context.Prescriptions                
                 .Include(p => p.Patient)
                 .Include(p => p.OrderingDoctor)
                 .Where(p => p.Patient.UserId == userId)

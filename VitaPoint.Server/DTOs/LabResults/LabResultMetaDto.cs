@@ -6,6 +6,7 @@
      */
     public class LabResultMetaDto
     {
+        public int Id { get; set; }
         public string? TestName { get; set; }
         public string? OrderingDoctor { get; set; }
         public string? LabName { get; set; }

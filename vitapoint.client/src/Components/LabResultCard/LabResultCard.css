@@ -1,0 +1,50 @@
+.lab-result-card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 0px;
+    width: 100%;
+    background-color: var(--Background-secondary);
+    border: 1px solid var(--Primary);
+    border-radius: 10px;
+    filter: drop-shadow(0px 3px 5px var(--Shadow));
+    transition: all 0.3s ease-in-out;
+}
+
+.lab-result-card:active {
+    scale: 1.025;
+    cursor: pointer;
+    filter: drop-shadow(0px 3px 5px var(--Secondary));
+    border: 1px solid var(--Accent);
+    background-color: var(--Background);
+}
+
+.lab-result-card-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.lab-result-card-row h3 {
+    font-size: var(--SmallFont);
+    margin: 8px 0px;
+    transition: all 0.3s ease-in-out;
+}
+
+.lab-result-card-data strong {
+    color: var(--Text);
+}
+
+@media (min-width: 1024px) {
+    .lab-result-card:hover {
+        scale: 1.025;
+        cursor: pointer;
+        filter: drop-shadow(0px 3px 5px var(--Secondary));
+        border: 1px solid var(--Accent);
+        background-color: var(--Background);
+    }
+
+    .lab-result-card:hover h3 {
+        color: var(--Accent);
+    }
+}

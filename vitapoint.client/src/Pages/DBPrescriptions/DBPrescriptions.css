@@ -1,0 +1,44 @@
+.prescriptions-syscontainer {
+    width: 100%;
+    height: 99vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.prescriptions-syscontainer h2 {
+    font-size: var(--MediumFont);
+}
+
+.prescriptions-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 32px 0px;
+    gap: 16px;
+}
+
+.prescriptions-title h2 {
+    display: flex;
+    align-items: center;
+}
+
+.prescriptions-row h3 {
+    font-size: var(--MediumFont);
+}
+
+.prescriptions-row {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 8px;
+}
+
+.prescription-holder {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

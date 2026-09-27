@@ -10,6 +10,7 @@ import DBCreateMessage from "./Pages/DBCreateMessage/DBCreateMessage";
 import DBMessageThread from "./Pages/DBMessageThread/DBMessageThread";
 import DBAppointments from "./Pages/DBAppointments/DBAppointments";
 import DBResults from './Pages/DBResults/DBResults';
+import DBLabResult from './Pages/DBLabResult/DBLabResult';
 import DBPrescriptions from "./Pages/DBPrescriptions/DBPrescriptions";
 
 
@@ -30,6 +31,7 @@ function App() {
                     <Route path="Messages/Create" element={<DBCreateMessage />} />
                     <Route path="Appointments" element={<DBAppointments />} />
                     <Route path="Results" element={<DBResults />} />
+                    <Route path="Results/:resultId" element={<DBLabResult />} />
                     <Route path="Prescriptions" element={<DBPrescriptions />} />
                 </Route>
             </Routes>

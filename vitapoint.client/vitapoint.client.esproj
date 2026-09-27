@@ -9,6 +9,8 @@
     <BuildOutputFolder>$(MSBuildProjectDirectory)\dist</BuildOutputFolder>
   </PropertyGroup>
   <ItemGroup>
+    <Folder Include="src\Components\LabResultCard\" />
+    <Folder Include="src\Components\PrescriptionCard\" />
     <Folder Include="src\Components\RootMessage\" />
     <Folder Include="src\Pages\Login\" />
     <Folder Include="src\Pages\Dashboard\" />
@@ -20,6 +22,7 @@
     <Folder Include="src\Pages\DBUpdateProfile\" />
     <Folder Include="src\Pages\DBMessageThread\" />
     <Folder Include="src\Pages\DBCreateMessage\" />
+    <Folder Include="src\Pages\DBLabResult\" />
     <Folder Include="src\Pages\Register\" />
   </ItemGroup>
 </Project>

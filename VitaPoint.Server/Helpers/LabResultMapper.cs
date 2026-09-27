@@ -9,6 +9,7 @@ namespace VitaPoint.Server.Helpers
         {
             return new LabResultMetaDto()
             {
+                Id = labResult.Id,
                 TestName = labResult.TestName,
                 OrderingDoctor = labResult.OrderingDoctor.GetDoctorName(),
                 LabName = labResult.Lab.LabName,

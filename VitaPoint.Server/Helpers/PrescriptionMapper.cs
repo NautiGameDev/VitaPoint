@@ -9,6 +9,7 @@ namespace VitaPoint.Server.Helpers
         {
             return new PrescriptionDto()
             {
+                Id = prescription.Id,
                 DoctorName = prescription.OrderingDoctor.GetDoctorName(),
                 MedicineName = prescription.MedicineName,
                 Dosage = prescription.Dosage,
