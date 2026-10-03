@@ -96,6 +96,9 @@ builder.Services.AddScoped<ILabResultRepo, LabResultRepo>();
 builder.Services.AddScoped<IPrescriptionService, PrescriptionService>();
 builder.Services.AddScoped<IPrescriptionRepo, PrescriptionRepo>();
 
+builder.Services.AddScoped<IAppointmentService, AppointmentService>();
+builder.Services.AddScoped<IAppointmentRepo, AppointmentRepo>();
+
 var app = builder.Build();
 
 app.UseDefaultFiles();

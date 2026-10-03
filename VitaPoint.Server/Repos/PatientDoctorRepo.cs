@@ -15,17 +15,7 @@ namespace VitaPoint.Server.Repos
             _context = context;
         }
 
-        //May not need this. Consider deleting
-        //public async Task<PatientDoctor?> GetPatientDoctorData(string firstId, string secondId)
-        //{
-        //    return await _context.PatientDoctor
-        //        .Include(pd => pd.Patient)
-        //        .Include(pd => pd.Doctor)
-        //        .FirstOrDefaultAsync(pd =>
-        //        (pd.PatientUserId == firstId && pd.DoctorUserId == secondId) ||
-        //        (pd.PatientUserId == secondId && pd.DoctorUserId == firstId));
-        //}
-
+        
         public async Task<List<PatientDoctor>> GetPDByUserId(string userId)
         {
             return await _context.PatientDoctor

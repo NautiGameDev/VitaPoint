@@ -19,6 +19,7 @@ namespace VitaPoint.Server.Data
         public DbSet<LabComponent> LabComponents { get; set; }
         public DbSet<Lab> Labs { get; set; }
         public DbSet<Prescription> Prescriptions { get; set; }
+        public DbSet<Appointment> Appointments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
@@ -51,6 +52,11 @@ namespace VitaPoint.Server.Data
                     ConcurrencyStamp = "4cf48e40-bd1c-478b-be12-40ccc232fe61"
                 }
             };
+
+            //Protection against double booking appointments
+            builder.Entity<Appointment>()
+                .HasIndex(a => new { a.DoctorId, a.Date, a.TimeSlot })
+                .IsUnique();
 
             builder.Entity<IdentityRole>().HasData(roles);
         }
