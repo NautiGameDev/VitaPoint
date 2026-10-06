@@ -4,6 +4,7 @@ namespace VitaPoint.Server.DTOs.Appointment
 {
     public class AppointmentDto
     {
+        public int Id { get; set; }
         public string? DoctorName { get; set; }
         public DateOnly Date { get; set; }
         public TimeOnly TimeSlot { get; set; }

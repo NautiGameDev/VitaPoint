@@ -30,7 +30,6 @@ namespace VitaPoint.Server.Models
                 "labwork" => AppointmentCategory.LabWork,
                 "vaccination" => AppointmentCategory.Vaccination,
                 "telehealth" => AppointmentCategory.Telehealth,
-                "newpatient" => AppointmentCategory.NewPatient,
                 "other" => AppointmentCategory.Other
             };
         }

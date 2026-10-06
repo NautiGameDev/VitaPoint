@@ -19,3 +19,12 @@ export function FormatDateOnly(dateString) {
         year: 'numeric'
     });
 }
+
+export function FormatTimeOnly(timeString) {
+    if (!timeString) return 'n/a';
+
+    return new Date(`2026-10-06T${timeString}`).toLocaleString('en-US', {
+        hour: 'numeric',
+        minute: '2-digit',
+    });
+}

@@ -10,19 +10,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="src\Components\LabResultCard\" />
+    <Folder Include="src\Components\AppointmentCard\" />
     <Folder Include="src\Components\PrescriptionCard\" />
     <Folder Include="src\Components\RootMessage\" />
     <Folder Include="src\Pages\Login\" />
     <Folder Include="src\Pages\Dashboard\" />
     <Folder Include="src\Pages\DBProfile\" />
     <Folder Include="src\Pages\DBMessages\" />
-    <Folder Include="src\Pages\DBAppointments\" />
     <Folder Include="src\Pages\DBResults\" />
     <Folder Include="src\Pages\DBPrescriptions\" />
     <Folder Include="src\Pages\DBUpdateProfile\" />
     <Folder Include="src\Pages\DBMessageThread\" />
     <Folder Include="src\Pages\DBCreateMessage\" />
     <Folder Include="src\Pages\DBLabResult\" />
+    <Folder Include="src\Pages\DBCreateAppointment\" />
     <Folder Include="src\Pages\Register\" />
   </ItemGroup>
 </Project>

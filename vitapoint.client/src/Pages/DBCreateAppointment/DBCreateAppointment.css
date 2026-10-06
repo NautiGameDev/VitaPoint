@@ -1,0 +1,260 @@
+
+
+.create-appointment-sysContainer {
+    width: 100%;
+    height: 99vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.create-appointment-sysContainer h2 {
+    font-size: var(--MediumFont);
+}
+
+.create-appointment-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.create-appointment-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 32px;
+}
+
+.create-appointment-header h2 {
+    display: flex;
+    align-items: center;
+}
+
+.create-appointment-card {
+    width: 90%;
+    background-color: var(--Background-secondary);
+    border: 1px solid var(--Primary);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    filter: drop-shadow(0px 3px 5px var(--Shadow));
+    margin: 16px 0px;
+}
+
+.create-appointment-card form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-appointment-row {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.create-appointment-col {
+    display: flex;
+    align-items: center;
+}
+
+.create-appointment-col label {
+    font-weight: var(--HeadingWeight);
+    font-family: var(--HeadingFont);
+    color: var(--Secondary);
+    letter-spacing: 1px;
+    margin: 0px 8px 0px 16px;
+    font-weight: var(--BrandWeight);
+}
+
+.create-appointment-col select {
+    height: 24px;
+    width: 200px;
+    font-size: var(--ErrorFont);
+    color: var(--Text);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    border: 1px solid var(--Primary);
+    border-radius: 5px;
+    margin: 8px 0px;
+    background-color: var(--Background-secondary);
+    cursor: pointer;
+}
+
+.create-appointment-col select:focus {
+    outline: 2px solid var(--Accent);
+}
+
+.create-appointment-col input {
+    height: 20px;
+    font-size: var(--NormalFont);
+    color: var(--Text);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    border: 1px solid var(--Primary);
+    border-radius: 5px;
+    margin: 8px 16px;
+    padding: 4px;
+    background-color: var(--Background-secondary);
+}
+
+.create-appointment-row h3 {
+    font-size: var(--SmallFont);
+}
+
+.create-appointments-time-grid {
+    width: 90%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 4px;
+    margin: 32px 0px;
+}
+
+.create-appointments-time-slot-available {
+    background-color: var(--Shadow);
+    border: 1px solid var(--Secondary);
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: var(--NormalFont);
+    font-weight: var(--HeadingWeight);
+    font-family: var(--HeadingFont);
+    color: var(--Text);
+    transition: all 0.3s ease-in-out;
+}
+
+.create-appointments-time-slot-unavailable {
+    background-color: var(--Background);
+    border: 1px solid var(--Shadow);
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: var(--NormalFont);
+    font-weight: var(--HeadingWeight);
+    font-family: var(--HeadingFont);
+    color: var(--Shadow);
+    transition: all 0.3s ease-in-out;
+}
+
+.create-appointments-time-slot-selected {
+    background-color: var(--Accent);
+    border: 1px solid var(--Shadow);
+    padding: 4px 8px;
+    border-radius: 10px;
+    font-size: var(--NormalFont);
+    font-weight: var(--HeadingWeight);
+    font-family: var(--HeadingFont);
+    color: var(--Background);
+    transition: all 0.3s ease-in-out;
+}
+
+.create-appointments-time-slot-available:active {
+    background-color: var(--Primary);
+    color: var(--Background);
+    cursor: pointer;
+}
+
+.create-appointments-time-slot-unavailable:active {
+    cursor: not-allowed;
+}
+
+.create-appointments-time-slot-selected:active {
+    cursor: pointer;
+}
+
+.create-appointment-comments-container {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+}
+
+.create-appointment-comments-container label {
+    font-weight: var(--HeadingWeight);
+    font-family: var(--HeadingFont);
+    color: var(--Secondary);
+    letter-spacing: 1px;
+    margin: 0px 8px 0px 0px;
+    font-weight: var(--BrandWeight);
+}
+
+.create-appointment-comments-container textarea {
+    width: 100%;
+    height: 100px;
+    font-size: var(--NormalFont);
+    color: var(--Text);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    border: 1px solid var(--Primary);
+    border-radius: 5px;
+    margin: 8px 0px;
+    padding: 4px;
+    background-color: var(--Background-secondary);
+    resize: none;
+}
+
+.create-appointment-comments-container textarea:focus {
+    outline: 2px solid var(--Accent);
+}
+
+.create-appointment-btn-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 16px 0px;
+}
+
+.create-appointment-btn-container button {
+    background-color: var(--Accent);
+    width: 200px;
+    padding: 8px;
+    border: 1px solid var(--Shadow);
+    border-radius: 10px;
+    color: var(--Background-secondary);
+    font-size: var(--NormalFont);
+    font-weight: var(--BrandWeight);
+    font-family: var(--BrandFont);
+    transition: all 0.3s ease-in-out;
+}
+
+.create-appointment-btn-container button:active {
+    background-color: var(--Primary);
+    scale: 1.05;
+    transform: translateY(-2px);
+    filter: drop-shadow(0px 2px 3px var(--Shadow));
+    transition: all 0.3s ease-in-out;
+}
+
+.create-appointment-error {
+    font-size: var(--ErrorFont);
+    color: var(--Error);
+    font-family: var(--TextFont);
+    font-weight: var(--TextWeight);
+    font-style: italic;
+    margin-top: 8px;
+}
+
+@media (min-width: 1024px) {
+    .create-appointments-time-slot-available:hover {
+        background-color: var(--Primary);
+        color: var(--Background);
+        cursor: pointer;
+    }
+
+    .create-appointments-time-slot-unavailable:hover {
+        cursor: not-allowed;
+    }
+
+    .create-appointments-time-slot-selected:hover {
+        cursor: pointer;
+    }
+
+    .create-appointment-btn-container button:hover {
+        background-color: var(--Primary);
+        scale: 1.05;
+        transform: translateY(-2px);
+        filter: drop-shadow(0px 2px 3px var(--Shadow));
+        transition: all 0.3s ease-in-out;
+        cursor: pointer;
+    }
+}
+

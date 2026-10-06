@@ -9,6 +9,7 @@ namespace VitaPoint.Server.Helpers
         {
             return new AppointmentDto()
             {
+                Id = appointment.Id,
                 DoctorName = appointment.Doctor.GetDoctorName(),
                 Date = appointment.Date,
                 TimeSlot = appointment.TimeSlot,

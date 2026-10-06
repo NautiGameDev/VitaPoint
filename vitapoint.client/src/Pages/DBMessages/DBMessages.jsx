@@ -30,7 +30,7 @@ function DBMessages() {
       <div className="page">
           {messages.length === 0 ? (
                   <div className="dbmessages-container">
-                  {sysMessage}
+                        <h2>{sysMessage}</h2>
                   </div>
               ):(
                   <div className="dbmessages-container">

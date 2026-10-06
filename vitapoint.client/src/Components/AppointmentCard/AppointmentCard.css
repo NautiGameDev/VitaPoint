@@ -1,17 +1,25 @@
-.prescription-card {
+.appointment-card {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    width: 80%;
+    gap: 4px;
+    padding-bottom: 16px;
+    width: 90%;
     background-color: var(--Background-secondary);
     border: 1px solid var(--Primary);
     border-radius: 10px;
     filter: drop-shadow(0px 3px 5px var(--Shadow));
     transition: all 0.3s ease-in-out;
-    padding-bottom: 16px;
 }
 
-.prescription-card-title {
+
+.appointment-card-row {
+    width: 100%;
+    display: flex;
+    padding: 8px 0px;
+    justify-content: center;
+}
+
+.appointment-card-header {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -21,33 +29,44 @@
     border-top-right-radius: 10px;
 }
 
-.prescription-card-title h3 {
+.appointment-card-header h4 {
     font-family: var(--HeadingFont);
     font-weight: var(--HeadingWeight);
     font-size: var(--SmallFont);
     color: var(--Background);
     letter-spacing: 2px;
+    padding: 4px 0px;
+}
+
+.appointment-card-row strong{
+    font-family: var(--NormalFont);
+    font-weight: var(--HeadingWeight);
+    font-size: var(--NormalFont);
+    color: var(--Text);
+    margin: 0px;
+}
+
+.appointment-card-row p {
+    width: 85%;
     display: flex;
-    align-items: center;
+    justify-content: center;
+    text-align: center;
+    background-color: var(--Shadow);
+    border: 1px solid var(--Secondary);
+    border-radius: 10px;
     padding: 8px;
 }
 
-.prescription-card-row {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-}
-
-.prescription-card-btn-container {
+.appointment-btn-container {
     width: 100%;
     display: flex;
     justify-content: space-around;
     margin-top: 16px;
 }
 
-.prescription-card-btn-container .enabled-btn {
+.appointment-btn-container button {
     background-color: var(--Primary);
-    width: 150px;
+    width: 200px;
     padding: 8px;
     border: 1px solid var(--Shadow);
     border-radius: 10px;
@@ -58,7 +77,7 @@
     transition: all 0.3s ease-in-out;
 }
 
-.prescription-card-btn-container .enabled-btn:active {
+.appointment-btn-container button:active {
     background-color: var(--Accent);
     scale: 1.05;
     transform: translateY(-2px);
@@ -66,38 +85,25 @@
     transition: all 0.3s ease-in-out;
 }
 
-    .prescription-card-btn-container .disabled-btn {
-        background-color: var(--Primary);
-        width: 150px;
-        padding: 8px;
-        border: 1px solid var(--Shadow);
-        border-radius: 10px;
-        color: var(--Background-secondary);
-        font-size: var(--ErrorFont);
-        font-weight: var(--BrandWeight);
-        font-family: var(--BrandFont);
-        transition: all 0.3s ease-in-out;
-        opacity: 0.2;
-    }
-
-.prescription-card-popup {
+.appointment-card-popup {
+    width: 100%;
+    height: 100%;
+    background-color: var(--Background-secondary);
     position: absolute;
     top: 0px;
     left: 0px;
-    background-color: var(--Background-secondary);
-    height: 100%;
-    width: 100%;
-    border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    gap: 16px;
-    transition: all 0.3s ease-in-out;
+    border-radius: 10px;
 }
 
 @media (min-width: 1024px) {
-    .prescription-card-btn-container .enabled-btn:hover {
+    .appointment-card {
+        width: 80%;
+    }
+
+    .appointment-btn-container button:hover {
         background-color: var(--Accent);
         scale: 1.05;
         transform: translateY(-2px);
