@@ -76,7 +76,7 @@ function DBLabResult() {
                                   Completed on <strong>{FormatDate(data.resultAt)}</strong>
                               </div>
                           </div>
-                          <div className="result-card-row">
+                          <div className="result-card-notes-row">
                               <div className="result-card-data result-card-notes">
                                   <h3>Notes:</h3>
                                   <p>{data.notes}</p>

@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
-    padding: 8px 0px;
-    width: 100%;
+    padding: 8px 8px;
+    width: 90%;
     background-color: var(--Background-secondary);
     border: 1px solid var(--Primary);
     border-radius: 10px;
@@ -22,6 +22,7 @@
 .lab-result-card-row {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
 }
 
@@ -29,6 +30,9 @@
     font-size: var(--SmallFont);
     margin: 8px 0px;
     transition: all 0.3s ease-in-out;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .lab-result-card-data strong {
@@ -36,6 +40,10 @@
 }
 
 @media (min-width: 1024px) {
+    .lab-result-card {
+        width: 80%;
+    }
+
     .lab-result-card:hover {
         scale: 1.025;
         cursor: pointer;
@@ -46,5 +54,9 @@
 
     .lab-result-card:hover h3 {
         color: var(--Accent);
+    }
+
+    .lab-result-card-row {
+        flex-direction: row;
     }
 }

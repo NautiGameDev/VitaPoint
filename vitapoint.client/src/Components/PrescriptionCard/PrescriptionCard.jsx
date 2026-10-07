@@ -33,7 +33,7 @@ function PrescriptionCard({ data, setRefreshState }) {
                 setIsSendingCall(false);
             }, 5000); 
         }
-
+        
 
     }
 

@@ -10,6 +10,7 @@
 
 .create-appointment-sysContainer h2 {
     font-size: var(--MediumFont);
+    text-align: center;
 }
 
 .create-appointment-container {
@@ -52,7 +53,9 @@
 .create-appointment-row {
     width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
+    align-items: center;
 }
 
 .create-appointment-col {
@@ -166,6 +169,7 @@
     width: 90%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .create-appointment-comments-container label {
@@ -255,6 +259,10 @@
         filter: drop-shadow(0px 2px 3px var(--Shadow));
         transition: all 0.3s ease-in-out;
         cursor: pointer;
+    }
+
+    .create-appointment-row {
+        flex-direction: row;
     }
 }
 

@@ -14,6 +14,7 @@ function DBCreateAppointment() {
     const [unavailableTimes, setUnavailableTimes] = useState([]);
     const [timesMessage, setTimesMessage] = useState("Select a doctor and date to see available times");
 
+    //Form Data
     const [doctor, setDoctor] = useState("");
     const [date, setDate] = useState("");
     const [time, setTime] = useState("");
@@ -22,6 +23,9 @@ function DBCreateAppointment() {
 
     const navigate = useNavigate();
     const todaysDate = new Date().toLocaleDateString('en-CA');
+
+    //Available time possibilities for the system.
+    //Time submitted is also double checked on back end to ensure time is valid and prevent client manipulation
     const timeSlots = [
         "08:00:00",
         "08:30:00",
@@ -42,6 +46,10 @@ function DBCreateAppointment() {
         "16:00:00"
     ];
 
+
+    //The three following functions handle doctor selection and date selection
+    //After each user input, the page attempts to fetch the unavailable times for the doctor/date pair
+    // if both a date and doctor have been selected
     const handleDoctorSelect = (doctorId) => {
         setDoctor(doctorId);
         getUnavailableTimes(doctorId, date);
@@ -72,6 +80,11 @@ function DBCreateAppointment() {
         }               
     }
 
+
+    //Function returns a string that manipulates the class of the html element for time slots
+    //Time slots appear different depending on whether it is selected, available, or unavailable
+    //Function tests if the time being passed into the HTML element matches a time in the unavailable times
+    //or if it is stored as the selected time
     const getTimeSlotStatus = (selectedTime) => {
         if (unavailableTimes.some(t => t.unavailableTime === selectedTime)) return "unavailable";
         else if (time === selectedTime) return "selected";
@@ -133,6 +146,8 @@ function DBCreateAppointment() {
         }
     }
 
+
+    //Initial loading in of available contacts
     useEffect(() => {
         const fetchDoctors = async () => {
             const response = await GetDoctors();
@@ -169,7 +184,7 @@ function DBCreateAppointment() {
                             <span className="material-icons">
                                 calendar_month
                             </span>
-                            Schedule New Appointment
+                            New Appointment
                         </h2>
                     </div>
                     <div className="create-appointment-card">
@@ -197,7 +212,7 @@ function DBCreateAppointment() {
                                     </div>
                                     <div className="create-appointment-col">
                                         <label>
-                                            Select Doctor:
+                                            Doctor:
                                         </label>
                                         <select value={doctor} onChange={(e) => (handleDoctorSelect(e.target.value))} >
                                             <option defaultValue disabled value="">--</option>

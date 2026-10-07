@@ -40,9 +40,13 @@ namespace VitaPoint.Server.Repos
                 .Include(a => a.Patient)
                 .Include(a => a.Doctor)
                 .Where(a => a.Patient.UserId == userId)
+                .OrderBy(a => a.Date)
+                .ThenBy(a => a.TimeSlot)
                 .ToListAsync();
         }
 
+        //Method used to get current appointments for doctor/date pairing based on user input
+        //Communicates to front-end which appointments aren't available
         public async Task<List<Appointment>> GetCurrentAppointments(string doctorId, DateOnly date)
         {
             return await _context.Appointments
