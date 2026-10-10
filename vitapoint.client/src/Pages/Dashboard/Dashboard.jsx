@@ -3,6 +3,7 @@ import "./Dashboard.css";
 import { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
+
 function Dashboard() {
 
     const [navVisible, setNavVisible] = useState(false);

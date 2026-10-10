@@ -71,7 +71,8 @@ namespace VitaPoint.Server.Controllers
 
                 if (updatedPatient == null)
                 {
-                    throw new Exception("Patient data could not be found in database");
+                    await transaction.RollbackAsync();
+                    return NotFound(new { message = "Patient record not found" });
                 }
 
                 await transaction.CommitAsync();

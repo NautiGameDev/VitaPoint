@@ -23,7 +23,7 @@ function PrescriptionCard({ data, setRefreshState }) {
             setTimeout(() => {
                 setIsSendingCall(false);
                 setRefreshState(prev => prev + 1);
-            }, 5000);            
+            }, 3000);            
         }
 
         else {
@@ -31,7 +31,7 @@ function PrescriptionCard({ data, setRefreshState }) {
 
             setTimeout(() => {
                 setIsSendingCall(false);
-            }, 5000); 
+            }, 3000); 
         }
         
 

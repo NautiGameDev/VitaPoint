@@ -110,6 +110,9 @@ function DBUpdateProfile() {
         if (response.status === 200) {
             navigate("/Dashboard/Profile");
         }
+        else if (response.status === 401) {
+            navigate("/Timeout");
+        }
         else {
             setUpdateError([`Status code ${response.status}: ${response.message} `]);
         }
@@ -135,6 +138,9 @@ function DBUpdateProfile() {
                 setState(response.data.state);
                 setZip(response.data.zip);
             }
+            else if (response.status === 401) {
+                navigate("/Timeout");
+            }
             else {
                 
                 setSysMessage(`Error fetching patient data. Status code ${response.status}. ${response.message}`);
@@ -158,6 +164,15 @@ function DBUpdateProfile() {
               )
               : (
                   <form className="profile-container" onSubmit={(e) => (handleSubmit(e))} >
+                      <div className="profile-header">
+                          <h2>
+                              <span className="material-icons">
+                                  account_circle
+                              </span>
+                              Update Profile
+                          </h2>
+                      </div>
+
                       <div className={updateError.length > 0 ? "update-profile-error-container" : ""} >
                           {updateError.length > 0 ? (<strong>Error updating your profile</strong>) : ""}
 

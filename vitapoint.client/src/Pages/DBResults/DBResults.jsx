@@ -2,10 +2,13 @@ import { useState, useEffect } from 'react';
 import { GetLabResults } from '../../Services/LabResultService';
 import LabResultCard from '../../Components/LabResultCard/LabResultCard';
 import "./DBResults.css";
+import { useNavigate } from 'react-router-dom';
 
 function DBResults() {
     const [sysMessage, setSysMessage] = useState('Loading lab results...');
     const [data, setData] = useState([]);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchLabResults = async () => {
@@ -15,8 +18,10 @@ function DBResults() {
                 if (response.data.length === 0) {
                     setSysMessage("Couldn't find lab results for user");
                 }
-                console.log(response.data);
                 setData(response.data);
+            }
+            else if (response.status === 401) {
+                navigate("/Timeout");
             }
             else {
                 setSysMessage(`Error ${response.status}: ${response.message}`);

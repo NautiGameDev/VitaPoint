@@ -2,6 +2,7 @@ import './Login.css';
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { postLogin } from "../../Services/AccountService"
+import { useAuth } from "../../Contexts/AuthContext";
 
 function Login() {
     const [email, setEmail] = useState("");
@@ -10,6 +11,7 @@ function Login() {
     const [loginError, setLoginError] = useState("");
 
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -27,6 +29,7 @@ function Login() {
         const response = await postLogin(email, password);
 
         if (response.status === 200) {
+            login();
             navigate("/Dashboard");
         }
         else {

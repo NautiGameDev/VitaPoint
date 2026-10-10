@@ -35,12 +35,14 @@ namespace VitaPoint.Server.Controllers
         {
             if (string.IsNullOrEmpty(UserId)) return Unauthorized(new { message = "User not authorized to fetch data" });
 
+            if (id <= 0) return BadRequest(new { message = "Invalid prescription ID" });
+
             var (refillSuccess, prescription) = await _prescriptionService.RequestRefill(id, UserId);
 
             if (prescription == null) return NotFound(new { Message = "Prescription could not be found for that user" });
 
             //This message returns if the update cannot be completed - IE no refills remaining, or refill status is not none/filled
-            if (!refillSuccess) return BadRequest(new { Message = "Couldn't request refill. Please contact your doctor." });
+            if (!refillSuccess) return Conflict(new { Message = "Couldn't request refill. Please contact your doctor" });
             
             return Ok(new { Message = "Refill request successful." });
         }

@@ -18,6 +18,9 @@ function DBAppointments() {
             if (response.status === 200) {
                 setAppointments(response.data);
             }
+            else if (response.status === 401) {
+                navigate("/Timeout");
+            }
             else {
                 setSysMessage(`Error ${response.status}: ${response.message}`);
             }

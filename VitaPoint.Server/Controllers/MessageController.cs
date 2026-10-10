@@ -26,8 +26,6 @@ namespace VitaPoint.Server.Controllers
 
             List<Message> messages = await _messageservice.GetRootMessagesForUser(UserId);
 
-            if (messages.Count == 0) return NotFound(new { message = "No messages found for user" });
-
             //Gets full list of patient-doctor connections by userid. Used to retrieve names of senders/receivers when building message DTOs
             List<PatientDoctor> pdList = await _patientDoctorService.GetPDByUserId(UserId);
 
@@ -41,6 +39,8 @@ namespace VitaPoint.Server.Controllers
         public async Task<IActionResult> GetMessageThread([FromRoute] int id)
         {
             if (string.IsNullOrEmpty(UserId)) return Unauthorized(new { message = "User not authorized to fetch data" });
+
+            if (id <= 0) return BadRequest(new { message = "Invalid thread ID." });
 
             List<Message> messages = await _messageservice.GetRepliesByRootId(UserId, id);
 
@@ -89,14 +89,14 @@ namespace VitaPoint.Server.Controllers
             (pd.PatientUserId == UserId && pd.DoctorUserId == receiverId) ||
             (pd.DoctorUserId == UserId && pd.PatientUserId == receiverId));
 
-            if (verifiedPD == null) return Unauthorized(new { message = "User not authorized to send message to that account" });
+            if (verifiedPD == null) return StatusCode(StatusCodes.Status403Forbidden, new { message = "User not authorized to send message to that account" });
 
 
             Message newMessage = await _messageservice.NewMessage(dto, senderId, receiverId);
 
             if (newMessage == null) return BadRequest(new { message = "An error occurred while creating new message" });
 
-            return Ok(new { message = "Message successfully created" });
+            return StatusCode(StatusCodes.Status201Created, new { message = "Message successfully created" });
         }
 
 

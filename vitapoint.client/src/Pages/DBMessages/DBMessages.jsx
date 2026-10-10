@@ -17,6 +17,9 @@ function DBMessages() {
             if (response.status === 200) {
                 setMessages(response.data);
             }
+            else if (response.status === 401) {
+                navigate("/Timeout");
+            }
             else {
                 setSysMessage(response.message);
             }

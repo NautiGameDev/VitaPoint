@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./Register.css";
-import { registerAccount } from '../../Services/AccountService'
+import { registerAccount } from '../../Services/AccountService';
+import { useAuth } from '../../Contexts/AuthContext';
 
 function Register() {
     const [email, setEmail] = useState("");
@@ -13,7 +14,11 @@ function Register() {
 
     const [registrationError, setRegistrationError] = useState("");
 
+    const [sysMessage, setSysMessage] = useState("Account registration successful. Navigating to patient portal...");
+    const [showSysMessage, setShowSysMessage] = useState(false);
+
     const navigate = useNavigate();
+    const { login } = useAuth();
 
     const handleRegistration = async (e) => {
         e.preventDefault();
@@ -97,9 +102,14 @@ function Register() {
 
         const response = await registerAccount(email, password, activationCode, dob, zip);
 
-        if (response.status === 200) {
-            alert("Account created successfully!");
-            navigate("/");
+        if (response.status === 201) {
+            setShowSysMessage(true);
+            setSysMessage("Account registration successful. Navigating to patient portal...");
+
+            login();
+            setTimeout(() => {
+                navigate("/Dashboard");
+            }, 3000);  
         }
         else {
             setRegistrationError(response.message);
@@ -108,7 +118,8 @@ function Register() {
     }
 
   return (
-      <div className="page">
+      <div className="page">        
+
           <div className="registration-logo">
               <h1>
                   <span class="material-icons">
@@ -117,6 +128,15 @@ function Register() {
                   VitaPoint
               </h1>
           </div>
+
+          {showSysMessage ? (
+              <div className="registration-sysContainer">
+                  <h2>{sysMessage}</h2>
+              </div>
+          ): (
+
+
+              
 
           <div className="registration-container">
               <div className="registration-header">
@@ -166,6 +186,8 @@ function Register() {
                   </div>
               </form>
           </div>
+
+          )}
       </div>
   );
 }

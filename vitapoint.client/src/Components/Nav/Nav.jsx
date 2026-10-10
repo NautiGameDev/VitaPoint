@@ -1,9 +1,12 @@
 import "./Nav.css";
 import { useNavigate } from "react-router-dom";
-import { logout } from "../../Services/AccountService"
+import { logoutUser } from "../../Services/AccountService";
+import { useEffect } from 'react';
+import { useAuth } from '../../Contexts/AuthContext';
 
 function Nav({ closeMenuCallback }) {
     const navigate = useNavigate();
+    const { isLoggedIn, logout } = useAuth();
 
     const handleNavigate = (page) => {
         navigate(page);
@@ -11,15 +14,26 @@ function Nav({ closeMenuCallback }) {
     }
 
     const handleLogout = async () => {
-        const response = await logout();
+        const response = await logoutUser();
 
         if (response.status === 200) {
+            logout();
             navigate("/");
+        }
+        else if (response.status === 401) {
+            navigate("/Timeout");
         }
         else {
             alert(`Error logging out: Status ${response.status} ${response.message}`);
         }
     }
+
+    useEffect(() => {
+        if (!isLoggedIn) {
+            navigate("/Unauthenticated");
+        }
+
+    }, [])
 
     return (
       <div className="nav-component">          

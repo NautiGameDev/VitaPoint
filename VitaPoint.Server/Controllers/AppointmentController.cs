@@ -71,14 +71,14 @@ namespace VitaPoint.Server.Controllers
             //Test if user can schedule appointments with requested doctor
             List<PatientDoctor> pdList = await _patientDoctorService.GetPDByUserId(UserId);
             PatientDoctor? verifiedMatch = pdList.FirstOrDefault(pd => pd.PatientUserId == UserId && pd.DoctorUserId == dto.DoctorId);
-            if (verifiedMatch == null) return StatusCode(403, new { message = "User not authorized to schedule appointment with that doctor" });
+            if (verifiedMatch == null) return StatusCode(StatusCodes.Status403Forbidden, new { message = "User not authorized to schedule appointment with that doctor" });
 
             //Test if appointment already exists
             if (await _appointmentService.DoesAppointmentExist(dto.DoctorId, dto.Date, dto.TimeSlot)) return Conflict(new { message = $"Appointment already exists at {dto.Date} {dto.TimeSlot}" });
             
             //Create new appointment if checks are passed
             Appointment? newAppointment = await _appointmentService.NewAppointment(dto, verifiedMatch.Patient, verifiedMatch.Doctor);
-            if (newAppointment == null) return BadRequest(new { message = "Failed to create new appointment." });
+            if (newAppointment == null) return StatusCode(StatusCodes.Status500InternalServerError, new { message = "Failed to create new appointment." });
             return Ok(new { message = $"New appointment created at {dto.Date} {dto.TimeSlot}" });
         }
 
@@ -89,7 +89,7 @@ namespace VitaPoint.Server.Controllers
             if (string.IsNullOrEmpty(UserId)) return Unauthorized(new { message = "User not authorized to access this endpoint" });
 
             Appointment? cancelledAppointment = await _appointmentService.CancelAppointment(id, UserId);
-            if (cancelledAppointment == null) return BadRequest(new { message = "Failed to cancel appointment" });
+            if (cancelledAppointment == null) return NotFound(new { message = "Appointment not found or access denied." });
 
             return Ok(new { message = "Appointment successfully cancelled" });
         }

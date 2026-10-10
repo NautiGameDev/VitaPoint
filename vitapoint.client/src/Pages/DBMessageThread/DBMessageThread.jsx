@@ -10,7 +10,9 @@ function DBMessageThread() {
     const [thread, setThread] = useState([]);
     const [sysMessage, setSysMessage] = useState("Loading...");
     const [reply, setReply] = useState("");
-    const [replyError, setReplyError] = useState("")
+    const [replyError, setReplyError] = useState("");
+
+    
 
     const navigate = useNavigate();
 
@@ -33,15 +35,23 @@ function DBMessageThread() {
 
         const response = await PostNewMessage(body);
 
-        if (response.status === 200) {
-            alert("Message sent successfully");
-            navigate("/Dashboard/Messages");
+        if (response.status === 201) {
+            setThread([]);
+            setSysMessage("Message sent successfully. Returning to messages...");
+
+            setTimeout(() => {
+                navigate("/Dashboard/Messages");
+            }, 3000);  
+        }
+        else if (response.status === 401) {
+            navigate("/Timeout");
         }
         else {
             setReplyError(`Error ${response.status}: ${response.message}`);
         }
 
     }
+        
 
     useEffect(() => {
         const getThread = async () => {
@@ -49,6 +59,9 @@ function DBMessageThread() {
 
             if (response.status === 200) {
                 setThread(response.data);
+            }
+            else if (response.status === 401) {
+                navigate("/Timeout");
             }
             else {
                 setSysMessage(`Error status ${response.status}: ${response.message}`);
@@ -69,36 +82,47 @@ function DBMessageThread() {
                 ) :
                     (
                         <div className="message-thread-container">
-                            <div className="message-thread-title">
+
+                            <div className="message-thread-header">
                                 <h2>
                                     <span className="material-icons">
                                         chat
                                     </span>
-                                    {thread[0].subject}
+                                    Message Center
                                 </h2>
                             </div>
-                            {thread.map((message, id) => (
-                                <div key={id} className={`message-thread-message ${id % 2 === 0 ? "message-light" : "message-dark"}`}>
-                                  <div className="message-thread-row">
-                                        <h3>{message.senderName}</h3>
-                                  </div>
-                                  <div className="message-thread-row">
-                                        <strong>{FormatDate(message.timeSent)}</strong>
-                                  </div>
-                                  <div className="message-thread-row">
-                                        <p>{message.content}</p>
-                                  </div>
-                              </div>
-                            ))}
-                            <div className="message-thread-reply-container">
-                                <div className="message-thread-error-container">
-                                    {replyError}
+                            <div className="message-thread-card">
+                                <div className="message-thread-title">
+                                    <h2>
+                                        <span className="material-icons">
+                                            chat
+                                        </span>
+                                        {thread[0].subject}
+                                    </h2>
                                 </div>
-                                <form onSubmit={(e) => (handleSubmit(e))} >
-                                    <label>Reply:</label>
-                                    <textarea value={reply} onChange={(e) => (setReply(e.target.value))} />
-                                    <button type="submit">Send</button>
-                                </form>
+                                {thread.map((message, id) => (
+                                    <div key={id} className={`message-thread-message ${id % 2 === 0 ? "message-light" : "message-dark"}`}>
+                                      <div className="message-thread-row">
+                                            <h3>{message.senderName}</h3>
+                                      </div>
+                                      <div className="message-thread-row">
+                                            <strong>{FormatDate(message.timeSent)}</strong>
+                                      </div>
+                                      <div className="message-thread-row">
+                                            <p>{message.content}</p>
+                                      </div>
+                                  </div>
+                                ))}
+                                <div className="message-thread-reply-container">
+                                    <div className="message-thread-error-container">
+                                        {replyError}
+                                    </div>
+                                    <form onSubmit={(e) => (handleSubmit(e))} >
+                                        <label>Reply:</label>
+                                        <textarea value={reply} onChange={(e) => (setReply(e.target.value))} />
+                                        <button type="submit">Send</button>
+                                    </form>
+                                </div>
                             </div>
                       </div>
                     )

@@ -3,11 +3,14 @@ import { useParams } from "react-router-dom";
 import { useState, useEffect } from 'react';
 import { GetLabResultById } from "../../Services/LabResultService";
 import { FormatDate } from "../../Clients/TextFormatterClient";
+import { useNavigate } from 'react-router-dom';
 
 function DBLabResult() {
     const { resultId } = useParams();
     const [data, setData] = useState([]);
     const [sysMessage, setSysMessage] = useState("Loading lab result data...");
+
+    const navigate = useNavigate();
 
     const flagToString = (flag) => {
         switch (flag) {
@@ -26,6 +29,9 @@ function DBLabResult() {
 
             if (response.status === 200) {
                 setData(response.data);
+            }
+            else if (response.status === 401) {
+                navigate("/Timeout");
             }
             else {
                 setSysMessage(`Error ${response.status}: ${response.message}`);

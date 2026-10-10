@@ -33,7 +33,6 @@ namespace VitaPoint.Server.Controllers
                 switch (result.ErrorType)
                 {
                     case AuthErrorType.NotFound:
-                        return NotFound(new { message = result.ErrorMessage });
                     case AuthErrorType.InvalidCredentials:
                         return Unauthorized(new { message = result.ErrorMessage });
                     default:
@@ -56,14 +55,14 @@ namespace VitaPoint.Server.Controllers
 
             if (patient == null)
             {
-                return Unauthorized(new { message = "Patient cannot be found with those credentials" });
+                return Unauthorized(new { message = "No eligible patient record found matching those credentials." });
             }
 
             var (result, userId) = await _accountService.Register(registerDto);
 
             if (!result.Success)
             {
-                return BadRequest(new { message = result.ErrorMessage });
+                return Conflict(new { message = result.ErrorMessage });
             }
 
             //Update the patient account to reflect account activation
@@ -72,7 +71,7 @@ namespace VitaPoint.Server.Controllers
 
             SetCookie(result.Token, result.RefreshToken);       
 
-            return Ok(new { message = "Registration successful." });
+            return StatusCode(StatusCodes.Status201Created, new { message = "Registration successful." });
         }
                 
 

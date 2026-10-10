@@ -5,6 +5,19 @@
     margin: 64px;
 }
 
+.registration-sysContainer {
+    width: 100%;
+    margin-top: 128px;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+.registration-sysContainer h2 {
+    font-size: var(--MediumFont);
+    padding: 16px;
+}
+
 .registration-container {
     width: 90%;
     background-color: var(--Background-secondary);

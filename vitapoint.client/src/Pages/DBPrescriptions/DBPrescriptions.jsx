@@ -2,11 +2,14 @@ import "./DBPrescriptions.css";
 import { useState, useEffect } from 'react';
 import { GetPrescriptions } from '../../Services/PrescriptionService';
 import PrescriptionCard from '../../Components/PrescriptionCard/PrescriptionCard';
+import { useNavigate } from 'react-router-dom';
 
 function DBPrescriptions() {
     const [data, setData] = useState([]);
     const [sysMessage, setSysMessage] = useState("Loading prescriptions...");
     const [refreshState, setRefreshState] = useState(0);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchPrescriptions = async () => {
@@ -14,6 +17,9 @@ function DBPrescriptions() {
 
             if (response.status === 200) {
                 setData(response.data);
+            }
+            else if (response.status === 401) {
+                navigate("/Timeout");
             }
             else {
                 setSysMessage(`Error ${response.status}: ${response.message}`);

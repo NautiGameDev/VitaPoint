@@ -17,6 +17,9 @@ function DBProfile() {
             if (response.status === 200) {
                 setData(response.data);
             }
+            else if (response.status === 401) {
+                navigate("/Timeout");
+            }
             else {                
                 setSysMessage(`Error fetching patient data. Status code ${response.status}. ${response.message}`);
             }

@@ -20,7 +20,7 @@ export async function attemptRefresh() {
     return response;
 }
 
-export async function logout() {
+export async function logoutUser() {
     const response = await apiRequest('account/logout', 'POST', null);
 
     return response;

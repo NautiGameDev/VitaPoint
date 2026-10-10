@@ -72,8 +72,10 @@ function DBCreateAppointment() {
 
         if (response.status === 200) {
             setUnavailableTimes(response.data);
-            console.log(response.data);
             setHasFetchedTimes(true);
+        }
+        else if (response.status === 401) {
+            navigate("/Timeout");
         }
         else {
             setTimesMessage(`Error fetching times. Status ${response.status}: ${response.message}`);

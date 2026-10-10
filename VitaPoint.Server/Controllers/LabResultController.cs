@@ -35,6 +35,8 @@ namespace VitaPoint.Server.Controllers
         {
             if (string.IsNullOrEmpty(UserId)) return Unauthorized(new { message = "User not authorized to fetch data" });
 
+            if(id <= 0) return BadRequest(new { message = "Invalid lab result ID." });
+
             LabResult? result = await _labResultService.GetLabResultById(id, UserId);
 
             if (result == null) return NotFound(new { Message = "No lab result by that id" });

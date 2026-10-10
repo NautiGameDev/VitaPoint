@@ -19,6 +19,8 @@ export async function apiRequest(endpoint, method, body, isRetry = false) {
 
         //Handle refresh token if auth token is expired
         if (response.status === 401 && !isRetry && endpoint !== 'account/login' && endpoint !== 'account/register') {
+
+            
             const refreshResponse = await attemptRefresh();
 
             if (refreshResponse.status === 200) {

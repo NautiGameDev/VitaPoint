@@ -40,9 +40,16 @@ function DBCreateMessage() {
 
         const response = await PostNewMessage(body);
 
-        if (response.status === 200) {
-            alert("Message sent successfully");
-            navigate("/Dashboard/Messages");
+        if (response.status === 201) {
+            setContacts([]);
+            setSysMessage("Message sent successfully");
+
+            setTimeout(() => {
+                navigate("/Dashboard/Messages");
+            }, 3000);            
+        }
+        else if (response.status === 401) {
+            navigate("/Timeout");
         }
         else {
             setErrorMessage(`Error ${response.status}: ${response.message}`);
@@ -55,6 +62,9 @@ function DBCreateMessage() {
 
             if (response.status === 200) {
                 setContacts(response.data);
+            }
+            else if (response.status === 401) {
+                navigate("/Timeout");
             }
             else {
                 setSysMessage(response.message);

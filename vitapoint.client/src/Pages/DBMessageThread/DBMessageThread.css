@@ -8,6 +8,26 @@
 }
 
 .message-thread-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.message-thread-header {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.message-thread-header h2 {
+    display: flex;
+    align-items: center;
+}
+
+.message-thread-card {
     width: 90%;
     background-color: var(--Background-secondary);
     border: 1px solid var(--Primary);

@@ -13,7 +13,8 @@ import DBResults from './Pages/DBResults/DBResults';
 import DBLabResult from './Pages/DBLabResult/DBLabResult';
 import DBPrescriptions from "./Pages/DBPrescriptions/DBPrescriptions";
 import DBCreateAppointment from "./Pages/DBCreateAppointment/DBCreateAppointment";
-
+import Timeout from "./Pages/Timeout/Timeout";
+import Unauthenticated from "./Pages/Unauthenticated/Unauthenticated";
 
 
 function App() {
@@ -36,6 +37,8 @@ function App() {
                     <Route path="Results/:resultId" element={<DBLabResult />} />
                     <Route path="Prescriptions" element={<DBPrescriptions />} />
                 </Route>
+                <Route path="/Timeout" element={<Timeout />} />
+                <Route path="/Unauthenticated" element={<Unauthenticated />} />
             </Routes>
         </div>
     );

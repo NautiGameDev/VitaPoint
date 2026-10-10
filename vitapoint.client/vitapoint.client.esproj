@@ -24,6 +24,8 @@
     <Folder Include="src\Pages\DBCreateMessage\" />
     <Folder Include="src\Pages\DBLabResult\" />
     <Folder Include="src\Pages\DBCreateAppointment\" />
+    <Folder Include="src\Pages\Unauthenticated\" />
+    <Folder Include="src\Pages\Timeout\" />
     <Folder Include="src\Pages\Register\" />
   </ItemGroup>
 </Project>

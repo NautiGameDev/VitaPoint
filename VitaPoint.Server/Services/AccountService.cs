@@ -33,7 +33,7 @@ namespace VitaPoint.Server.Services
                 return new AuthResult
                 {
                     Success = false,
-                    ErrorMessage = "Account doesn't exist with that email address",
+                    ErrorMessage = "Invalid email or password combination",
                     ErrorType = AuthErrorType.NotFound
                 };
             }
@@ -46,7 +46,7 @@ namespace VitaPoint.Server.Services
                 return new AuthResult()
                 {
                     Success = false,
-                    ErrorMessage = "Incorrect credentials",
+                    ErrorMessage = "Invalid email or password combination",
                     ErrorType = AuthErrorType.InvalidCredentials
                 };
             }

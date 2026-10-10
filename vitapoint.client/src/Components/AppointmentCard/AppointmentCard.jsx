@@ -30,7 +30,7 @@ function AppointmentCard({ data, setRefreshState }) {
                 setIsCancelling(false);
                 setIsSendingCall(false);
                 setRefreshState(prev => prev + 1);
-            }, 5000)
+            }, 3000)
         }
         else {
             setCardMessage(`Error ${response.status}: ${response.message}`);
@@ -38,7 +38,7 @@ function AppointmentCard({ data, setRefreshState }) {
             setTimeout(() => {
                 setIsCancelling(false);
                 setIsSendingCall(false);
-            }, 5000); 
+            }, 3000); 
         }
 
     }
