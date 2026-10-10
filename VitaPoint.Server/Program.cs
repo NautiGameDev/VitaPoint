@@ -145,12 +145,43 @@ using (var scope = app.Services.CreateScope())
         }
     }
 
+    //Seeding fake doctor accounts
     if (await userManager.FindByNameAsync("mayalin@vitapoint.com") == null)
     {
         var testDoctor = new Account
         {
             UserName = "mayalin@vitapoint.com",
             Email = "mayalin@vitapoint.com"
+        };
+
+        var result = await userManager.CreateAsync(testDoctor, "VitaPoint1!");
+
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(testDoctor, "Moderator");
+        }
+    }
+    if (await userManager.FindByNameAsync("gregoryhouse@vitapoint.com") == null)
+    {
+        var testDoctor = new Account
+        {
+            UserName = "gregoryhouse@vitapoint.com",
+            Email = "gregoryhouse@vitapoint.com"
+        };
+
+        var result = await userManager.CreateAsync(testDoctor, "VitaPoint1!");
+
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(testDoctor, "Moderator");
+        }
+    }
+    if (await userManager.FindByNameAsync("meredithgrey@vitapoint.com") == null)
+    {
+        var testDoctor = new Account
+        {
+            UserName = "meredithgrey@vitapoint.com",
+            Email = "meredithgrey@vitapoint.com"
         };
 
         var result = await userManager.CreateAsync(testDoctor, "VitaPoint1!");

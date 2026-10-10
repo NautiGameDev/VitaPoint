@@ -55,7 +55,7 @@ namespace VitaPoint.Server.Controllers
 
             if (patient == null)
             {
-                return Unauthorized(new { message = "No eligible patient record found matching those credentials." });
+                return NotFound(new { message = "No eligible patient record found matching those credentials." });
             }
 
             var (result, userId) = await _accountService.Register(registerDto);

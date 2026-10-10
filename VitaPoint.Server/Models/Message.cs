@@ -14,7 +14,5 @@ namespace VitaPoint.Server.Models
         public DateTime TimeSent { get; set; } = DateTime.UtcNow;
         public bool IsReply { get; set; } = false;
         public int? RootId { get; set; }
-
-        
     }
 }

@@ -3,5 +3,6 @@
     <Build />
     <Deploy />
   </Project>
+  <Project Path="VitaPoint.Server.Tests/VitaPoint.Server.Tests.csproj" Id="babaea54-a589-4a0c-ae57-c49271436a44" />
   <Project Path="VitaPoint.Server/VitaPoint.Server.csproj" />
 </Solution>
