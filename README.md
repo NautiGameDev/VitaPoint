@@ -16,6 +16,7 @@ VitaPoint is a full stack, client-based patient portal created for the Computer 
 * VitaPoint.Server - Backend API
 * VitaPoint.client - React frontend single-page application
 * VitaPoint.Server.Tests - Unit tests with xUnit
+* Screenshots - Screenshots of application with desktop and mobile views
 
 ## Architecture
 VitaPoint uses a three-tiered full-stack architecture which includes a web application for frontend, client-side functions, API middleware that handles system business logic, data processing, and system security features, and database for data storage. Additionally, the front and backend applications follow a layered architecture pattern to cleanly organize logic and functionality of objects in the system.
